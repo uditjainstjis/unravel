@@ -53,7 +53,21 @@ const RoomCard = ({ room }) => {
       )}
 
       <p>{room.description || "No description available"}</p>
-      <button onClick={toggleModal}>Show More</button>
+
+      {/* Show room details in the main card */}
+      {room.variants && room.variants.length > 0 ? (
+        <div className="room-details">
+          <h4>Room Details</h4>
+          <p><strong>Price:</strong> {room.variants[0].total_price?.currency} {room.variants[0].total_price?.discounted_price}</p>
+          <p><strong>Bed Type:</strong> {room.variants[0].display_properties.find(prop => prop.name === "bed_type")?.value || "Not specified"}</p>
+          <p><strong>Cancellation Policy:</strong> {room.variants[0].cancellation_info?.free_cancellation_info || "No free cancellation"}</p>
+          <p><strong>Max Occupancy:</strong> {room.variants[0].display_properties.find(prop => prop.name === "adult_occupancy")?.value || "N/A"}</p>
+        </div>
+      ) : (
+        <p>No room variants available</p>
+      )}
+
+      <button className="select-room-btn" onClick={toggleModal}>Show More</button>
 
       {/* Modal to show room variants */}
       {showModal && (

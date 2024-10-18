@@ -6,7 +6,7 @@ import RoomListing from './components/RoomListing';
 function App() {
   return (
     <div className="App">
-      <h1>Room Listings</h1>
+      <h1 style={{marginLeft:"8vw",padding:"10px"}}>Room Listings</h1>
       <RoomListing />
     </div>
   );

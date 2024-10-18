@@ -43,7 +43,7 @@ const RoomCard = ({ room }) => {
         // If no video, show image or fallback image, or loading if none available
         inView ? (
           imageSrc ? (
-            <img src={imageSrc} alt="Room" onError={() => setImageSrc(hotelRoom)} />
+            <img src={imageSrc} alt="Room" className="hotelImage" onError={() => setImageSrc(hotelRoom)} />
           ) : (
             <div className="media-placeholder">Loading media...</div>
           )
